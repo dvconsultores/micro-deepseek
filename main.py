@@ -4,11 +4,24 @@ import logging
 from typing import Dict, Any, List
 import requests
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI()
+
+# Allow your frontend origins
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",
+        "https://ideas.globaldv.net",  # if calling from same domain
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],  # Or ["POST"]
+    allow_headers=["*"],  # Or ["Content-Type"]
+)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
