@@ -16,11 +16,12 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://ideas.globaldv.net",  # if calling from same domain
+        "https://ideas.globaldv.net",
+        "https://globaldv.net",
     ],
     allow_credentials=True,
-    allow_methods=["*"],  # Or ["POST"]
-    allow_headers=["*"],  # Or ["Content-Type"]
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Configure logging
@@ -170,4 +171,4 @@ def generate_proposal(req: ProposalRequest):
     result = analyze_with_llm(req.idea, req.lang)
     return result 
 
-# run uvicorn main:app --reload --port 8001  
+# run uvicorn main:app --reload --port 8001
