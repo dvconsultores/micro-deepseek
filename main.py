@@ -69,7 +69,7 @@ def analyze_with_llm(idea: str, lang: str = 'es-VE') -> Dict[str, Any]:
         return get_mock_proposal(lang)
 
     model_name = "deepseek-chat"
-    timeout_sec = 15
+    timeout_sec = 45
 
     # Build language string
     lang_name = {
